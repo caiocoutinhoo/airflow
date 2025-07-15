@@ -1,0 +1,21 @@
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  push-image:
+    # build e push para GHCR …
+
+  deploy-dev:
+    needs: push-image
+    steps:
+      - name: Deploy via SSH
+        run: |
+          ssh ${{ secrets.DEV_SSH }} \
+            'export AIRFLOW_TAG=dev-${{ github.sha }} && \
+             docker compose -f docker/docker-compose.yml \
+                            -f docker/docker-compose.prod.yml \
+                            --profile prod pull && \
+             docker compose -f docker/docker-compose.yml \
+                            -f docker/docker-compose.prod.yml \
+                            --profile prod up -d --remove-orphans'

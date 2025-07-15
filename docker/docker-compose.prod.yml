@@ -1,0 +1,13 @@
+services:
+  airflow-scheduler:
+    image: ghcr.io/${ORG}/airflow:${AIRFLOW_TAG:?err}
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+
+  airflow-worker:
+    image: ghcr.io/${ORG}/airflow:${AIRFLOW_TAG:?err}
+
+  airflow-apiserver:
+    image: ghcr.io/${ORG}/airflow:${AIRFLOW_TAG:?err}
+
+  # sem bind mounts; DAGs entram na imagem ou em volume read-only

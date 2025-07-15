@@ -1,0 +1,26 @@
+services:
+  # Bind mounts p/ hot-reload; mantém tudo igual ao oficial
+  airflow-scheduler:
+    volumes:
+      - ../dags:/opt/airflow/dags
+      - ../dbt:/opt/airflow/dbt
+      - ../plugins:/opt/airflow/plugins
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+
+  airflow-worker:
+    volumes:
+      - ../dags:/opt/airflow/dags
+      - ../dbt:/opt/airflow/dbt
+
+  airflow-apiserver:
+    volumes:
+      - ../dags:/opt/airflow/dags
+      - ../dbt:/opt/airflow/dbt
+
+  # CLI opcional para rodar dbt localmente
+  # dbt-cli:
+  #   image: ghcr.io/dbt-labs/dbt-postgres:1.9
+  #   profiles: ["dev"]
+  #   volumes:
+  #     - ../dbt:/usr/app

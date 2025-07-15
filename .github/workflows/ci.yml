@@ -1,0 +1,10 @@
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Lint + testes (igual antes) …
+      - uses: docker/build-push-action@v5
+        with:
+          context: ./docker
+          load: true
