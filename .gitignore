@@ -12,3 +12,4 @@ envs/prod.env
 # IDEs
 .vscode/
 .idea/
+config/*

@@ -1,0 +1,18 @@
+services:
+  airflow-scheduler:
+    volumes:
+      - ../dags:/opt/airflow/dags
+      - ../dbt:/opt/airflow/dbt
+      - ../plugins:/opt/airflow/plugins
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+
+  airflow-worker:
+    volumes:
+      - ../dags:/opt/airflow/dags
+      - ../dbt:/opt/airflow/dbt
+
+  airflow-apiserver:
+    volumes:
+      - ../dags:/opt/airflow/dags
+      - ../dbt:/opt/airflow/dbt
