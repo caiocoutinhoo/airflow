@@ -89,5 +89,3 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml --env-file envs/d
 <div align="center">
 
 ### 🎉 Projeto configurado e pronto para uso!
-
-**Desenvolvido com ❤️ usando Apache
